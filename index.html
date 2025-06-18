@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barcode Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1>Classroom Attendance</h1>
+  </header>
+
+  <div class="container">
+    <h2>Scan a Barcode</h2>
+    <div class="video-wrapper">
+      <div id="scanner"></div>
+    </div>
+    <p id="result"></p>
+  </div>
+
+  <a href="admin.html" style="position: fixed; bottom: 10px; right: 10px;">🔧 Admin</a>
+  <script src="script.js"></script>
+</body>
+</html>

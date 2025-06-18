@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📦 Product Manager</h2>
+    <form id="addProductForm">
+      <input type="text" id="barcode" placeholder="Barcode" required>
+      <input type="text" id="name" placeholder="Product Name" required>
+      <button type="submit">Add Product</button>
+    </form>
+    <ul id="productList"></ul>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
