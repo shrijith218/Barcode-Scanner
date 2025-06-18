@@ -8,42 +8,42 @@ function startScanner() {
       name: "Live",
       type: "LiveStream",
       target: document.querySelector('#scanner'),
-      constraints: { facingMode: "environment" }
+      constraints: {
+        facingMode: "environment"
+      }
     },
-    decoder: { readers: ["ean_reader", "code_128_reader", "upc_reader"] }
+    decoder: {
+      readers: ["ean_reader", "code_128_reader", "upc_reader"]
+    }
   }, err => {
-    if (err) return console.error(err);
+    if (err) {
+      console.error("Scanner initialization error:", err);
+      return;
+    }
     Quagga.start();
   });
 
   Quagga.onDetected(async data => {
     const code = data.codeResult.code;
+    console.log("🔍 Detected:", code);
     Quagga.stop();
 
-    const now = new Date();
+    document.getElementById('result').innerText = `Scanned: ${code}`;
 
-    const { data: product } = await supabase
-      .from('products')
-      .select('*')
-      .eq('barcode', code)
-      .single();
+    const res = await fetch('/scan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ barcode: code })
+    });
 
-    const productName = product ? product.name : "Not Found";
-
-    const entry = {
-      barcode: code,
-      product: productName,
-      date: now.toLocaleDateString(),
-      time: now.toLocaleTimeString()
-    };
-
-    await supabase.from('scan_logs').insert([entry]);
+    const result = await res.json();
 
     document.getElementById('result').innerText =
-      `Scanned: ${code}\nProduct: ${productName}\nTime: ${entry.time}`;
+      `Scanned: ${result.data.Barcode}\nProduct: ${result.data.Product}\nTime: ${result.data.Time}`;
 
     setTimeout(() => Quagga.start(), 2000);
   });
 }
+
 
 window.onload = startScanner;
