@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_KEY = 'YOUR_PUBLIC_ANON_KEY';
+const SUPABASE_URL = 'https://iycqbldwoqjotbtjxbwh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5Y3FibGR3b3Fqb3RidGp4YndoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAyMTY5OTIsImV4cCI6MjA2NTc5Mjk5Mn0.FYiexhuek1YgF6hpIJeBrRbcq3xu1ORPmikWSLDsL-M';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function startScanner() {
